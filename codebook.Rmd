@@ -1,0 +1,87 @@
+Getting and Cleaning Data Course Project CodeBook
+
+1 INTRODUCTION
+This document aims to present the description of the variables and data used for processing with the descriptive purpose of presenting descriptively the technical effort for data cleaning using the R language as a data-mining tool. This process is not a process with low complexity involving advanced techniques of information handling. 
+Data were obtained from the data sources from the following downloads, they are:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+Here are the data analysis for the project:
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+2 DESCIPTION OF ACTIVITY
+
+From the execution of the script "run_analysis.R was possible to start the data cleansing process, and these are classified in stages as the need to move the data to the group stage to reach the final goal as basic design.
+
+2.1 STEP ONE
+
+The main source of data was stored in the working directory, the R installation in the following folder:
+
+C: \ R \ data \ data \ UCI HAR Dataset \ test
+
+input files for reading reading:
+
+X_train.txt,
+y_train.txt
+
+and subject_train.txt the data were stored in trainData, trainLabeland trainSubject.
+
+2.2 STEP TWO
+
+Input files for reading:
+
+X_test.txt, y_test.txt and subject_test.txt folder "./data/test" and store them in TESTDATA, testLabel andtestsubject variables, respectively.
+
+2.3 PASSAO THREE
+
+Concatenating TESTDATA was necessary to trainData 10299x561 to generate a frame data,
+
+- JoinData;
+- Concatentado testLabel trainLabelto to generate a data frame 10299x1,
+- JoinLabel;
+- Concatenated testSubject to trainSubject to generate a data frame 10299x1, joinSubject.
+
+2.4 STEP FOUR
+
+Features.txt reading the file folder "/ date" and store the data in a variable called attributes. Extracting the measures concerning the mean and standard deviation.
+As resutlado a list of indices so you can get a subset of joinData with corresponding amount of specific columns
+
+
+
+
+2.5 STEP FIVE
+
+It was necessary to treat the subset of columns, by cleaning the same, "()" and "-" symbols in the names, as well as make the first letter of "mean"
+
+They were also tratdos names of the symbols, that the first letter had a specific reference, or changing the font Mácara uppercase "M" and "S" respectively.
+
+2.6 STEP SIX
+
+Reading activity_labes.txt file diretóprio "./data, so that it was stored in a variable with the name of activity
+
+2.7 STEP SEVEN
+
+Treating data by cleaning the names of the activities from the second column of the activity. First treat all the names of the lower references if the name is underlined between letters is removed sublinahdo and promoted the sequential letter after the reference of the first underlined
+
+2.8 STEP EIGHT
+
+Finally the joinLavel values are trasnformados considering the data and structure of activities.
+
+2.9 STEP NINE
+
+At this stage the combination and made of joinSubject, joinLabel joinData and with reference to the column so that a new set of daods is obtained, ie cleanedData.
+Duly adjustada the name of the first two columns (subject "and" activity ").
+The subject column contains integer values which can vary from 1 to 30. The sixth column contains the activity types and names ativdiades, the rest are data concerning the measurement information varying between -1 and 1, uniquely.
+2:10 STEP TEN
+
+At this stage of data cleaning we are writing the cleanedData considering the file "merged_data.txt" in its working directory.
+
+2:11 STEP ELEVEN
+
+In this phase of the project is a source of grated properly organized data, and is characterized by the independently created taking into account the average score of each analysis measurement for each type of activities including the theme (subject).
+
+We arrived to a design vision that considers 30 individuals in isolation taking into account 6 activities exclusively. This process takes into account 180 combined arrangements. For each arrangement and the mean of each measurement with its combination thereof. Starting the data frame from resulados have a combination of data that meets the criteria of 180x68.
+
+2:12 STEP TWELVE
+
+The data is written to the file:
+
+- Data_with_means.txt in the working directory respectively.
